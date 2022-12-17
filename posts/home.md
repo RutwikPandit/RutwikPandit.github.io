@@ -1,9 +1,9 @@
 ## Welcome to my HomePage
-![](./img/azeroth_screenshot.png)
+![](./img/Potrait.jpeg)
 
-## Chivo Mono
+## Chivo Mono 
 
-### Run locally
+### Gray Theme
 1. Clone this project to your computer
 2. Start simple HTTP server with Python:
   ```
