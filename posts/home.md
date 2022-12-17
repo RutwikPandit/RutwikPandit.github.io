@@ -55,7 +55,9 @@ There are some social icon links in `footer`, put your own one by edit the `inde
 
 ```
 <div class="footer">
+    <!--
     <p>Created with <a href="http://github.com/huytd/azeroth-js">azeroth.js</a></p>
+    -->
     <div class="social">
         <a href="#"><i class="icon-facebook-squared"></i></a>
         <a href="#"><i class="icon-twitter-squared"></i></a>
