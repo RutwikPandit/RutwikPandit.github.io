@@ -28,3 +28,5 @@
 - [Markdown Test Page](#lorem-ipsum.md)
 - [Markdown Test Page](#lorem-ipsum.md)
 - [Third Post With azeroth-js!](#third-post.md)
+- [Markdown Test Page](#lorem-ipsum.md)
+- [Third Post With azeroth-js!](#third-post.md)
