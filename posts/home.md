@@ -1,7 +1,7 @@
 ## Welcome to my HomePage
 ![](./img/azeroth_screenshot.png)
 
-## Rutwik Here
+## Chivo Mono
 
 ### Run locally
 1. Clone this project to your computer
