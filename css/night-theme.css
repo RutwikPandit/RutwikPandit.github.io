@@ -1,20 +1,20 @@
 @import url("./theme.css");
 
 body {
-    background-color: #494949;
+    background-color: #000000;
     color: #fafafa;
 }
 
 code {
     background-color: #E4F1FE;
-    color: #2d0f18;
+    color: #4f4f4f;
 }
 
 .header {
-    background-color: #2d0f18;
+    background-color: #4f4f4f;
     color: #fafafa;
 }
 
 .footer {
-    background-color: #2d0f18;
+    background-color: #4f4f4f;
 }
