@@ -1,19 +1,7 @@
-# Welcome to my HomePage
+## Welcome to my HomePage
 ![](./img/azeroth_screenshot.png)
 
-## What make AzerothJS cool?
-
-- Super lightweight
-- No installation needed
-- No server side code
-- Made for Github Pages
-- Easy to customization
-
-## Get AzerothJS here
-
-The source code are available on [Github](http://github.com/huytd/azeroth-js)
-
-## How to use?
+## Rutwik Here
 
 ### Run locally
 1. Clone this project to your computer
