@@ -1,6 +1,7 @@
+<center>
 ## Welcome to my HomePage
 ![](./img/Potrait.jpeg)
-
+</center>
 ## Chivo Mono 
 
 ### Gray Theme
