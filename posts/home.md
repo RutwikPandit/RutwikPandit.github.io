@@ -1,9 +1,16 @@
 <center>
-## Welcome to my HomePage
-![](./img/Potrait.jpeg)
-</center>
-## Chivo Mono 
+## Hello! <br> My name’s Rutwik. I’m a Hardware-Software engineer based in Bangalore-Mumbai.
 
+I am interested in Performance Engineering <br> Hardware and Software.
+
+<!---
+![](./img/Potrait.jpeg)
+-->
+<img src="./img/Potrait.jpeg" width="250s"/>
+
+
+## Chivo Mono 
+</center>
 ### Gray Theme
 1. Clone this project to your computer
 2. Start simple HTTP server with Python:
