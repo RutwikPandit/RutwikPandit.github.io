@@ -18,18 +18,22 @@ html{
 }
 
 h1 {
+    color: #00d992;
     font-size: 1.6em;
 }
 
 h2 {
+    color: #00d992;
     font-size: 1.2em;
 }
 
 h3 {
+    color: #00d992;
     font-size: 1.0em;
 }
 
 h4 {
+    color: #00d992;
     font-size: 0.8em;
 }
 
@@ -42,7 +46,7 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    border-bottom: 1px solid #FAFAFA;
+    border-bottom: 1px solid #00d992;
     padding-bottom: 5px;
 }
 
@@ -96,7 +100,7 @@ code.math {
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: #00d992;
 }
 
 a:hover {
