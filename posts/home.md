@@ -17,14 +17,14 @@ I am interested in Performance Engineering / Modelling of Hardware and Software.
 
 I currently work at Qualcomm in the Platform Architecture team. I primarily work on : 
 - Micro-architectural performance modelling and workload characterization.
-- Writing SoC subsystems performance modeling & guiding architecture tradeoffs
-- Competitive Analysis of micro-architecture.
+- SoC subsystems performance modeling & guiding architecture tradeoffs.
+- Competitive Analysis of platform architecture.
 
 
 
 ## Background
 
-I hold a Master's degree in Computer Science from IIT KGP and a bachelor's degree in Electronics Engineering from SPIT Mumbai.  
+I hold a Master's degree in Computer Science from IIT KGP and a bachelor's degree in Electronics from SPIT Mumbai.  
 
 
 My primary skillset is in :  
