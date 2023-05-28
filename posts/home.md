@@ -1,78 +1,42 @@
-<center>
-## Hello! <br> My name’s Rutwik. I’m a Hardware-Software engineer based in Bangalore-Mumbai.
+## <center>Hello!
+<center>This is Rutwik's website. I’m a Hardware-Software engineer based in Bangalore-Mumbai.
 
-I am interested in Performance Engineering <br> Hardware and Software.
+I am interested in Performance Engineering / Modelling of Hardware and Software.
+<br>
 
 <!---
 ![](./img/Potrait.jpeg)
 -->
 <img src="./img/Potrait.jpeg" width="250s"/>
-
-
-## Chivo Mono 
 </center>
-### Gray Theme
-1. Clone this project to your computer
-2. Start simple HTTP server with Python:
-  ```
-  python -m SimpleHTTPServer 3000
-  ```
-3. Your blog now available at [http://localhost:3000](http://localhost:3000)
+<br> <br>
 
-### Use with Github Pages
-1. Create your Github Pages
-2. Clone the this project and push it to your Github Pages
-3. Every time you want to write, create a new `*.md` file in `posts` folder and write with your favorite Markdown Editor
-4. Modify `posts/home.md`, list your posts here
-5. Commit and push everything here. Done!
 
-### Use with other web host
-1. Clone this project to your computer
-2. Create a new post in `*.md` format and save to `posts` folder
-3. Upload the everything to your web host
-4. Done
+## Experience
 
-## How to customize?
 
-### Change code highlighting theme
-The original theme for the code highlighting is `Tomorrow Night`. If you don't like it, there are many pre-installed themes inside `css/highlight` folder. Pick one and replace to `line 6` of `index.html`:
+I currently work at Qualcomm in the Platform Architecture team. I primarily work on : 
+- Micro-architectural performance modelling and workload characterization.
+- Writing SoC subsystems performance modeling & guiding architecture tradeoffs
+- Competitive Analysis of micro-architecture.
 
-```
-<link rel="stylesheet" href="./css/highlight/tomorrow-night.css">
-```
 
-### Change the font family
-The original font for the blog is `Roboto Slab`. You can change the new font by replacing `line 4` of `index.html`:
 
-```
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
-```
+## Background
 
-And change the font in `css/theme.css`:
+I hold a Master's degree in Computer Science from IIT KGP and a bachelor's degree in Electronics Engineering from SPIT Mumbai.  
 
-```
-* {
-    font-family: 'Roboto Slab', serif;
-    font-size: 20px;
-    font-weight: 100;
-}
-```
 
-### Insert your Social links
-There are some social icon links in `footer`, put your own one by edit the `index.html`:
+My primary skillset is in :  
+1. C / C++ / Python / Rust and Systems Programming.<br>
+2. Software Performance Engineer, Benchmarking, and Code Profiling.<br>
+3. CUDA/Metal/OpenCL, Assembly Intrinsics.<br>
+4. VHDL, Verilog, High-Level Synthesis.<br>
+5. Tensorflow, Docker.<br>
+6. Compiler Optimisations and LLVM.<br>
 
-```
-<div class="footer">
-    <!--
-    <p>Created with <a href="http://github.com/huytd/azeroth-js">azeroth.js</a></p>
-    -->
-    <div class="social">
-        <a href="#"><i class="icon-facebook-squared"></i></a>
-        <a href="#"><i class="icon-twitter-squared"></i></a>
-        <a href="#"><i class="icon-linkedin-squared"></i></a>
-        <a href="#"><i class="icon-github-squared"></i></a>
-        <a href="#"><i class="icon-mail-alt"></i></a>
-    </div>
-</div>
-```
+
+I am passionate about optimizing from Application to Transistors, RISC-V computing and High Throughput Architectures.
+
+
 
