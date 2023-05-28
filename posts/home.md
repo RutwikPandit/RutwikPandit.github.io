@@ -1,5 +1,5 @@
 ## <center>Hello!
-<center>This is Rutwik's website. I’m a Hardware-Software engineer based in Bangalore-Mumbai.
+<center>I am Rutwik, I am an Architect but not the bricks kind but bits kind based in Bangalore-Mumbai.
 
 I am interested in Performance Engineering / Modelling of Hardware and Software.
 <br>
