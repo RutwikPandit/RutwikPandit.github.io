@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutwik Pandit</title>
-    <meta name="description" content="GPU architect, CMU researcher. Interested in the full path from applications to transistor physics — and the biological systems that got there first.">
+    <meta name="description" content="GPU architect, CMU researcher. Interested in the full path from applications to transistor physics, and the biological systems that got there first.">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,7 +22,6 @@
             --white: #ffffff;
             --accent: var(--green-dim);
             --accent-bg: var(--green-bg);
-            --toggle-icon: '☽';
         }
 
         [data-theme="dark"] {
@@ -34,7 +33,6 @@
             --white: #1c1c1c;
             --accent: var(--green);
             --accent-bg: rgba(34, 197, 94, 0.1);
-            --toggle-icon: '☀';
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,7 +66,6 @@
             transition: border-color 0.2s;
             color: var(--ink-muted);
         }
-
         .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
         h1 {
@@ -83,13 +80,7 @@
         .tagline { font-size: 0.95rem; color: var(--ink-muted); margin-bottom: 2rem; }
 
         .links { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
-        .links a {
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--ink-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+        .links a { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
         .links a:hover { color: var(--accent); }
 
         .divider { width: 40px; height: 2px; background: var(--accent); margin: 2.5rem 0; border-radius: 1px; }
@@ -103,7 +94,6 @@
         }
 
         p { color: var(--ink-light); margin-bottom: 1rem; }
-        p.quiet { font-size: 0.92rem; color: var(--ink-muted); font-style: italic; }
 
         a.il { color: var(--accent); text-decoration: none; font-weight: 500; }
         a.il:hover { text-decoration: underline; }
@@ -201,8 +191,8 @@
 
     <p>
         I live at intersections. The most interesting problems sit at boundaries that most people
-        treat as walls — where software meets ISA, where architecture meets RTL, where transistor
-        physics meets the abstractions we build on top of it. I like understanding the full path:
+        treat as walls: where software meets ISA, where architecture meets RTL, where transistor
+        physics meets the abstractions we build on top of it. I like understanding the full path,
         from the application a user touches, through the compiler, down through the instruction set,
         into the microarchitecture, through the register-transfer logic, all the way to the
         electrons moving through doped silicon. Every layer makes promises to the one above it.
@@ -210,7 +200,7 @@
     </p>
 
     <p>
-        I think about biology the same way. A cell is a system — arguably the most sophisticated
+        I think about biology the same way. A cell is a system, arguably the most sophisticated
         one ever built. DNA is storage. mRNA is the instruction stream. The ribosome is a protein
         compiler: it reads codons, resolves amino acid lookups, and folds an output structure that
         executes a function. The cell even has error correction, caching (chaperone proteins), and
@@ -219,24 +209,24 @@
     </p>
 
     <p>
-        A lot of what I think about reduces to performance versus programmability. Which abstractions
-        give software leverage, and which ones quietly cap how far a design can scale? Which limits
-        are fundamental, and which ones exist because old code still has to run well? I keep coming
-        back to backward compatibility as the long-term limiter on performance scalability: sometimes
-        something as small as uniform register latency is the right call for the programming model,
-        but it also bounds tile sizing and shapes the ceiling of the next machine.
+        This is why I find architecture worth working on. The right architecture scales amazingly.
+        Biology proved it: one cellular architecture, refined over 3.8 billion years, runs everything
+        from bacteria to blue whales. The same principle holds in computing. You can optimize a
+        kernel, tune a compiler pass, or shrink a transistor, but the ceiling on performance for
+        most systems will always be architectural. A good architecture compounds across generations.
+        A bad one taxes everything built on top of it, forever.
     </p>
 
     <p>
         Right now I'm a grad student at Carnegie Mellon studying electrical and computer engineering,
         working with <a class="il" href="https://www.cs.cmu.edu/~gibbons/">Phil Gibbons</a>
         and <a class="il" href="https://www.cs.cmu.edu/~pavlo/">Andy Pavlo</a> on computer
-        architecture, compiler optimization, and data-intensive systems. Before CMU, I worked on
-        GPU and SoC architecture teams at NVIDIA and Qualcomm. At NVIDIA I focused on pre-silicon
-        performance for Rubin and Feynman; at Qualcomm I worked on system-level performance,
-        inference efficiency, and architecture trade studies. Across both, I've been drawn to the
-        same question: how to make systems scale across the whole design, not just win locally in
-        one block.
+        architecture, compiler optimization, and data-intensive systems.
+        Before CMU, I worked on GPU and SoC architecture teams at NVIDIA and Qualcomm. At NVIDIA
+        I focused on pre-silicon performance for Rubin and Feynman; at Qualcomm I worked on
+        system-level performance, inference efficiency, and architecture trade studies. Across both,
+        I kept coming back to the same question: how to make systems scale across the whole design,
+        not just win locally in one block.
     </p>
 
     <div class="divider"></div>
@@ -244,7 +234,7 @@
     <h2>Something I Built</h2>
     <p>
         LLM inference on mobile GPUs wastes enormous power. The GPU clocks at full speed even when
-        memory bandwidth — not compute — is the bottleneck. The arithmetic intensity of LLM decode
+        memory bandwidth, not compute, is the bottleneck. The arithmetic intensity of LLM decode
         is around 10 ops/byte on hardware capable of 48. That gap is pure waste.
     </p>
     <p>
@@ -257,7 +247,7 @@
         <p>
             A composite metric across memory latency, GPU read bandwidth, and ALU utilization drives
             clock scaling. A second feedback loop using retired instructions per cycle validates the
-            adjustment — if throughput drops too much, it rolls back.
+            adjustment. If throughput drops too much, it rolls back.
         </p>
         <span class="stat">80% better perf/watt · ~7.5% performance cost</span>
     </div>
@@ -273,10 +263,10 @@
             <div class="wn">2025</div>
             <div class="wr">NVIDIA</div>
             <div class="wt">GPU Architecture Performance</div>
-            <p>Pre-silicon performance for Rubin and Feynman across the full SM-to-DDR path. I wrote
+            <p>Pre-silicon performance for Rubin and Feynman across the full SM-to-DDR path. Wrote
             directed SASS tests to isolate throughput and latency limits in SM, TMA, L1/L2, crossbar
-            NoC, and framebuffer, then used RTL and PerfSim results to triage bottlenecks, validate
-            POR targets, and reason about where the real ceilings came from.</p>
+            NoC, and framebuffer. Used RTL and PerfSim results to triage bottlenecks, validate POR
+            targets, and reason about where the real ceilings came from.</p>
         </div>
         <div class="ti">
             <div class="wn">2022 – 2025</div>
@@ -310,24 +300,16 @@
 
     <h2>What I'm Thinking About</h2>
     <p>
-        Why GPU workloads don't hit speed-of-light and what to do about it.
-        LLVM backends for accelerators — how compiler IR can exploit hardware features that
-        programmers don't even know exist. The memory wall in LLM inference and what
-        hardware-software co-design can change. How to build systems that are fast because
-        they understand the machine, not despite it.
-    </p>
-    <p>
-        I keep circling back to one systems question: performance versus programmability. Some of
-        the hardest scaling limits are not dramatic; they come from guarantees you keep for software.
-        A uniform register-latency rule can be great for backward compatibility and still constrain
-        tile sizing. More broadly, backward compatibility often becomes the real ceiling on
-        performance scalability, so I think a lot about how designs scale across generations, not
-        just how they win on one benchmark.
+        Why GPU workloads don't hit speed-of-light and what to do about it. LLVM backends for
+        accelerators, and how compiler IR can exploit hardware features that programmers don't
+        even know exist. The memory wall in LLM inference and what hardware-software co-design
+        can change. How to build systems that are fast because they understand the machine,
+        not despite it.
     </p>
     <p>
         And occasionally: how 3.8 billion years of evolution solved the same problems we're
-        solving now — scheduling, memory management, error correction, parallel execution —
-        with chemistry instead of silicon.
+        solving now (scheduling, memory management, error correction, parallel execution) with
+        chemistry instead of silicon.
     </p>
 
     <a class="bl" href="#home">Read the blog →</a>
