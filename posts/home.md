@@ -1,42 +1,24 @@
-## <center>Hello!
-<center>I am Rutwik, I am an Architect but not the bricks kind but bits kind based in Bangalore-Mumbai.
+## Hey, I'm Rutwik.
 
-I am interested in Performance Engineering / Modelling of Hardware and Software.
+I'm a grad student at CMU working on computer architecture, compiler optimization, and data-intensive systems with [Phil Gibbons](https://www.cs.cmu.edu/~gibbons/) and [Andy Pavlo](https://www.cs.cmu.edu/~pavlo/).
+
+Before this, I spent a year at NVIDIA on GPU architecture performance (pre-silicon work on next-gen GPUs) and three years at Qualcomm on platform architecture (SoC-level performance, LLM inference optimization, cache design).
+
+I care about making hardware do more with less — finding the places where software and silicon meet badly, and fixing them.
+
 <br>
 
-<!---
-![](./img/Potrait.jpeg)
--->
-<img src="./img/Potrait.jpeg" width="250s"/>
-</center>
-<br> <br>
+## Writing
 
+I'll be posting here about GPU performance, LLM inference bottlenecks, compiler backends, and lessons from building real systems.
 
-## Experience
+- [Markdown Test Page](#lorem-ipsum)
 
+<br>
 
-I currently work at Qualcomm in the Platform Architecture team. I primarily work on : 
-- Micro-architectural performance modelling and workload characterization.
-- SoC subsystems performance modeling & guiding architecture tradeoffs.
-- Competitive Analysis of platform architecture.
+## Elsewhere
 
-
-
-## Background
-
-I hold a Master's degree in Computer Science from IIT KGP and a bachelor's degree in Electronics from SPIT Mumbai.  
-
-
-My primary skillset is in :  
-1. C / C++ / Python / Rust and Systems Programming.<br>
-2. Software Performance Engineer, Benchmarking, and Code Profiling.<br>
-3. CUDA/Metal/OpenCL, Assembly Intrinsics.<br>
-4. VHDL, Verilog, High-Level Synthesis.<br>
-5. Tensorflow, Docker.<br>
-6. Compiler Optimisations and LLVM.<br>
-
-
-I am passionate about optimizing from Application to Transistors, RISC-V computing and High Throughput Architectures.
-
-
-
+- [Patent: Dynamic DVFS for GPU Power Management](https://patents.google.com/patent/US20250356449A1/en)  
+- [LinkedIn](https://www.linkedin.com/in/rutwik-p-96a822107/)  
+- [GitHub](https://github.com/RutwikPandit)  
+- [Email](mailto:rutwik.pandit@gmail.com)  
