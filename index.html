@@ -1,65 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutwik Pandit</title>
-    <meta name="description" content="GPU performance architect, CMU researcher, and someone who cares deeply about making hardware do more with less.">
+    <meta name="description" content="GPU architect, CMU researcher. Interested in the full path from applications to transistor physics — and the biological systems that got there first.">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
+            --green: #22c55e;
+            --green-dim: #16a34a;
+            --green-bg: rgba(34, 197, 94, 0.08);
+        }
+
+        [data-theme="light"] {
             --ink: #1a1a1a;
             --ink-light: #4a4a4a;
             --ink-muted: #757575;
             --surface: #fafaf8;
-            --surface-warm: #f5f3ef;
-            --accent: #b45309;
-            --accent-bg: #fef3c7;
             --border: #e5e2dc;
             --white: #ffffff;
-            --max-width: 640px;
+            --accent: var(--green-dim);
+            --accent-bg: var(--green-bg);
+            --toggle-icon: '☽';
         }
+
+        [data-theme="dark"] {
+            --ink: #e4e4e4;
+            --ink-light: #b0b0b0;
+            --ink-muted: #808080;
+            --surface: #141414;
+            --border: #2a2a2a;
+            --white: #1c1c1c;
+            --accent: var(--green);
+            --accent-bg: rgba(34, 197, 94, 0.1);
+            --toggle-icon: '☀';
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 17px; }
+
         body {
             font-family: 'DM Sans', -apple-system, sans-serif;
             color: var(--ink);
             background: var(--surface);
             line-height: 1.75;
             -webkit-font-smoothing: antialiased;
+            transition: background 0.3s, color 0.3s;
         }
-        .page { max-width: var(--max-width); margin: 0 auto; padding: 5rem 1.5rem 4rem; }
-        h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 2.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.3rem; }
+
+        .page { max-width: 640px; margin: 0 auto; padding: 5rem 1.5rem 4rem; position: relative; }
+
+        .theme-toggle {
+            position: absolute;
+            top: 2rem;
+            right: 1.5rem;
+            background: none;
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s;
+            color: var(--ink-muted);
+        }
+
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+        h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+
         .tagline { font-size: 0.95rem; color: var(--ink-muted); margin-bottom: 2rem; }
+
         .links { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
-        .links a { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+        .links a {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
         .links a:hover { color: var(--accent); }
+
         .divider { width: 40px; height: 2px; background: var(--accent); margin: 2.5rem 0; border-radius: 1px; }
-        h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.8rem; }
+
+        h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--ink);
+        }
+
         p { color: var(--ink-light); margin-bottom: 1rem; }
+        p.quiet { font-size: 0.92rem; color: var(--ink-muted); font-style: italic; }
+
         a.il { color: var(--accent); text-decoration: none; font-weight: 500; }
         a.il:hover { text-decoration: underline; }
-        .pc { background: var(--white); border-left: 3px solid var(--accent); border-radius: 2px 6px 6px 2px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
-        .pc .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--ink-muted); margin-bottom: 0.4rem; }
+
+        .pc {
+            background: var(--white);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px 6px 6px 2px;
+            padding: 1.2rem 1.4rem;
+            margin: 1.5rem 0;
+        }
+        .pc .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ink-muted);
+            margin-bottom: 0.4rem;
+        }
         .pc p { font-size: 0.9rem; margin-bottom: 0.5rem; }
-        .stat { display: inline-block; background: var(--accent-bg); color: var(--accent); font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 3px; margin-top: 0.3rem; }
-        .pl { display: flex; flex-direction: column; gap: 0.8rem; margin: 1rem 0; }
-        .pub { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.2rem; }
-        .pub .v { font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
-        .pub h3 { font-family: 'Source Serif 4', Georgia, serif; font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.2rem; }
-        .pub .au { font-size: 0.82rem; color: var(--ink-muted); }
-        .pub .au strong { color: var(--ink); }
+        .stat {
+            display: inline-block;
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 3px;
+            margin-top: 0.3rem;
+        }
+
         .tl { display: flex; flex-direction: column; gap: 1.2rem; margin: 1rem 0; }
         .ti { padding-left: 1.2rem; border-left: 2px solid var(--border); position: relative; }
-        .ti::before { content: ''; position: absolute; left: -4.5px; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+        .ti::before {
+            content: '';
+            position: absolute;
+            left: -4.5px;
+            top: 7px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
         .ti .wn { font-size: 0.72rem; font-weight: 600; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.04em; }
-        .ti .wr { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 1rem; }
+        .ti .wr { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 1rem; color: var(--ink); }
         .ti .wt { font-size: 0.85rem; color: var(--accent); font-weight: 500; }
         .ti p { font-size: 0.88rem; }
-        .bl { display: inline-block; margin-top: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; border: 1.5px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 5px; transition: all 0.2s; }
+
+        .bl {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1.5px solid var(--border);
+            padding: 0.4rem 0.9rem;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
         .bl:hover { border-color: var(--accent); background: var(--accent-bg); }
-        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--ink-muted); }
-        @media (max-width: 640px) { html { font-size: 15.5px; } .page { padding: 3.5rem 1.2rem 3rem; } h1 { font-size: 1.8rem; } }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.78rem;
+            color: var(--ink-muted);
+        }
+
+        @media (max-width: 640px) {
+            html { font-size: 15.5px; }
+            .page { padding: 3.5rem 1.2rem 3rem; }
+            h1 { font-size: 1.8rem; }
+            .theme-toggle { top: 1.5rem; right: 1.2rem; }
+        }
+
         .fade-in { opacity: 0; transform: translateY(12px); animation: fadeUp 0.5s ease forwards; }
         .fade-in:nth-child(2) { animation-delay: 0.08s; }
         .fade-in:nth-child(3) { animation-delay: 0.16s; }
@@ -69,6 +188,8 @@
 <body>
 <div class="page">
 
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+
     <h1 class="fade-in">Rutwik Pandit</h1>
     <div class="tagline fade-in">Pittsburgh, PA · rutwik.pandit@gmail.com</div>
 
@@ -76,19 +197,33 @@
         <a href="mailto:rutwik.pandit@gmail.com">Email</a>
         <a href="https://linkedin.com/in/rutwik-p-96a822107" target="_blank">LinkedIn</a>
         <a href="https://github.com/RutwikPandit" target="_blank">GitHub</a>
-        <a href="https://scholar.google.com/" target="_blank">Scholar</a>
     </div>
 
     <p>
-        I'm a grad student at Carnegie Mellon studying electrical and computer engineering,
-        working with <a class="il" href="https://www.cs.cmu.edu/~gibbons/">Phil Gibbons</a>
-        and <a class="il" href="https://www.cs.cmu.edu/~pavlo/">Andy Pavlo</a> on problems
-        at the intersection of computer architecture, compiler optimization, and data-intensive systems.
+        I live at intersections. The most interesting problems sit at boundaries that most people
+        treat as walls — where software meets ISA, where architecture meets RTL, where transistor
+        physics meets the abstractions we build on top of it. I like understanding the full path:
+        from the application a user touches, through the compiler, down through the instruction set,
+        into the microarchitecture, through the register-transfer logic, all the way to the
+        electrons moving through doped silicon. Every layer makes promises to the one above it.
+        Performance breaks when those promises don't hold.
     </p>
+
     <p>
-        Before CMU, I spent three years at Qualcomm and a year at NVIDIA, both on GPU and SoC architecture teams.
-        I like working at the hardware-software boundary — the layer where you stop abstracting and start
-        measuring what actually happens when bits move through silicon.
+        I think about biology the same way. A cell is a system — arguably the most sophisticated
+        one ever built. DNA is storage. mRNA is the instruction stream. The ribosome is a protein
+        compiler: it reads codons, resolves amino acid lookups, and folds an output structure that
+        executes a function. The cell even has error correction, caching (chaperone proteins), and
+        garbage collection (lysosomes). Each of us is a deeply concurrent program running on
+        wetware, and I find that both humbling and thrilling.
+    </p>
+
+    <p>
+        Right now I'm a grad student at Carnegie Mellon studying electrical and computer engineering,
+        working with <a class="il" href="https://www.cs.cmu.edu/~gibbons/">Phil Gibbons</a>
+        and <a class="il" href="https://www.cs.cmu.edu/~pavlo/">Andy Pavlo</a> on computer
+        architecture, compiler optimization, and data-intensive systems.
+        Before CMU, I spent time at NVIDIA and Qualcomm on GPU and SoC architecture teams.
     </p>
 
     <div class="divider"></div>
@@ -96,8 +231,12 @@
     <h2>Something I Built</h2>
     <p>
         LLM inference on mobile GPUs wastes enormous power. The GPU clocks at full speed even when
-        memory bandwidth — not compute — is the bottleneck. I designed a closed-loop system that
-        detects this mismatch and dials back the GPU dynamically, without losing throughput.
+        memory bandwidth — not compute — is the bottleneck. The arithmetic intensity of LLM decode
+        is around 10 ops/byte on hardware capable of 48. That gap is pure waste.
+    </p>
+    <p>
+        I designed a closed-loop system that detects this mismatch across the GPU-NoC-LLC-DRAM stack
+        and dials back the GPU dynamically, without losing throughput.
     </p>
 
     <div class="pc">
@@ -110,24 +249,7 @@
         <span class="stat">80% better perf/watt · ~7.5% performance cost</span>
     </div>
 
-    <a class="il" href="https://patents.google.com/patent/US20250356449A1/en" target="_blank" style="font-size:0.85rem;">Read the patent →</a>
-
-    <div class="divider"></div>
-
-    <h2>Research</h2>
-
-    <div class="pl">
-        <div class="pub">
-            <div class="v">Venue · 2026</div>
-            <h3>[Paper Title — Placeholder]</h3>
-            <div class="au"><strong>Rutwik Pandit</strong>, [co-authors], Phillip B. Gibbons</div>
-        </div>
-        <div class="pub">
-            <div class="v">Venue · 2026</div>
-            <h3>[Paper Title — Placeholder]</h3>
-            <div class="au"><strong>Rutwik Pandit</strong>, [co-authors], Andrew Pavlo</div>
-        </div>
-    </div>
+    <a class="il" href="https://patents.google.com/patent/US20250356449A1/en" target="_blank" style="font-size:0.85rem;">Read the full patent →</a>
 
     <div class="divider"></div>
 
@@ -138,23 +260,30 @@
             <div class="wn">2025</div>
             <div class="wr">NVIDIA</div>
             <div class="wt">GPU Architecture Performance</div>
-            <p>Pre-silicon performance for next-gen architectures. SASS-level tests across the SM-to-DDR path, architectural bottleneck triage, POR validation for TMA and advanced cache designs.</p>
+            <p>Pre-silicon performance for next-gen architectures (Rubin, Feynman). SASS-level tests
+            across the SM-to-DDR path, bottleneck triage, POR validation for TMA, advanced caches,
+            128-bit atomics.</p>
         </div>
         <div class="ti">
             <div class="wn">2022 – 2025</div>
             <div class="wr">Qualcomm</div>
             <div class="wt">Platform Architecture</div>
-            <p>LLM inference optimization, System Level Cache governor for XR SoCs, atomics architecture benchmarking, workload characterization with roofline models.</p>
+            <p>LLM inference power optimization (patent), System Level Cache governor for XR SoCs,
+            atomics architecture benchmarking, workload characterization with roofline models and
+            top-down analysis across CPU and RISC-V cores.</p>
         </div>
+    </div>
+
+    <div class="tl" style="margin-top: 2rem;">
         <div class="ti">
-            <div class="wn">2026</div>
+            <div class="wn">Expected 2026</div>
             <div class="wr">Carnegie Mellon University</div>
             <div class="wt">MS ECE · Architecture & Compilers</div>
         </div>
         <div class="ti">
             <div class="wn">2022</div>
             <div class="wr">IIT Kharagpur</div>
-            <div class="wt">MTech CS</div>
+            <div class="wt">MTech Computer Science</div>
         </div>
         <div class="ti">
             <div class="wn">2020</div>
@@ -165,12 +294,18 @@
 
     <div class="divider"></div>
 
-    <h2>What I Think About</h2>
+    <h2>What I'm Thinking About</h2>
     <p>
         Why GPU workloads don't hit speed-of-light and what to do about it.
-        How compiler backends can exploit hardware features that programmers don't know exist.
-        Why LLM inference is memory-bound and what hardware-software co-design can do about it.
-        Making systems fast because they understand the machine, not despite it.
+        LLVM backends for accelerators — how compiler IR can exploit hardware features that
+        programmers don't even know exist. The memory wall in LLM inference and what
+        hardware-software co-design can change. How to build systems that are fast because
+        they understand the machine, not despite it.
+    </p>
+    <p>
+        And occasionally: how 3.8 billion years of evolution solved the same problems we're
+        solving now — scheduling, memory management, error correction, parallel execution —
+        with chemistry instead of silicon.
     </p>
 
     <a class="bl" href="#home">Read the blog →</a>
@@ -180,5 +315,27 @@
     </footer>
 
 </div>
+
+<script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    document.getElementById('themeBtn').textContent = next === 'dark' ? '☀' : '☽';
+    localStorage.setItem('theme', next);
+}
+
+(function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀' : '☽';
+        });
+    }
+})();
+</script>
+
 </body>
 </html>
