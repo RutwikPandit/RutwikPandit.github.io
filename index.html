@@ -219,11 +219,24 @@
     </p>
 
     <p>
+        A lot of what I think about reduces to performance versus programmability. Which abstractions
+        give software leverage, and which ones quietly cap how far a design can scale? Which limits
+        are fundamental, and which ones exist because old code still has to run well? I keep coming
+        back to backward compatibility as the long-term limiter on performance scalability: sometimes
+        something as small as uniform register latency is the right call for the programming model,
+        but it also bounds tile sizing and shapes the ceiling of the next machine.
+    </p>
+
+    <p>
         Right now I'm a grad student at Carnegie Mellon studying electrical and computer engineering,
         working with <a class="il" href="https://www.cs.cmu.edu/~gibbons/">Phil Gibbons</a>
         and <a class="il" href="https://www.cs.cmu.edu/~pavlo/">Andy Pavlo</a> on computer
-        architecture, compiler optimization, and data-intensive systems.
-        Before CMU, I spent time at NVIDIA and Qualcomm on GPU and SoC architecture teams.
+        architecture, compiler optimization, and data-intensive systems. Before CMU, I worked on
+        GPU and SoC architecture teams at NVIDIA and Qualcomm. At NVIDIA I focused on pre-silicon
+        performance for Rubin and Feynman; at Qualcomm I worked on system-level performance,
+        inference efficiency, and architecture trade studies. Across both, I've been drawn to the
+        same question: how to make systems scale across the whole design, not just win locally in
+        one block.
     </p>
 
     <div class="divider"></div>
@@ -260,9 +273,10 @@
             <div class="wn">2025</div>
             <div class="wr">NVIDIA</div>
             <div class="wt">GPU Architecture Performance</div>
-            <p>Pre-silicon performance for next-gen architectures (Rubin, Feynman). SASS-level tests
-            across the SM-to-DDR path, bottleneck triage, POR validation for TMA, advanced caches,
-            128-bit atomics.</p>
+            <p>Pre-silicon performance for Rubin and Feynman across the full SM-to-DDR path. I wrote
+            directed SASS tests to isolate throughput and latency limits in SM, TMA, L1/L2, crossbar
+            NoC, and framebuffer, then used RTL and PerfSim results to triage bottlenecks, validate
+            POR targets, and reason about where the real ceilings came from.</p>
         </div>
         <div class="ti">
             <div class="wn">2022 – 2025</div>
@@ -301,6 +315,14 @@
         programmers don't even know exist. The memory wall in LLM inference and what
         hardware-software co-design can change. How to build systems that are fast because
         they understand the machine, not despite it.
+    </p>
+    <p>
+        I keep circling back to one systems question: performance versus programmability. Some of
+        the hardest scaling limits are not dramatic; they come from guarantees you keep for software.
+        A uniform register-latency rule can be great for backward compatibility and still constrain
+        tile sizing. More broadly, backward compatibility often becomes the real ceiling on
+        performance scalability, so I think a lot about how designs scale across generations, not
+        just how they win on one benchmark.
     </p>
     <p>
         And occasionally: how 3.8 billion years of evolution solved the same problems we're
