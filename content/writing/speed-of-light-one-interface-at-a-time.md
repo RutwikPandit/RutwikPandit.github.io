@@ -47,13 +47,17 @@ get when enough requests are in flight to cover latency. Little's law gives the 
 
 $$ \text{bytes in flight} = \text{bandwidth} \times \text{latency} $$
 
-On an H100 SXM, published HBM3 bandwidth is about 3.35 TB/s, and DRAM latency on that class of
-part lands in the region of 600 to 700 nanoseconds. So sustaining peak requires roughly
+On an H100 SXM, published HBM3 bandwidth is about 3.35 TB/s. Latency is not a published spec, so
+it has to come from measurement: microbenchmark studies of GH100 report on the order of 660 cycles
+for a global load with a footprint large enough to miss everywhere, which at the 1.755 GHz boost
+clock is roughly 375 ns. Mind those units. Latency gets quoted in cycles far more often than in
+nanoseconds, and treating one as the other is a quick way to be wrong by most of a factor of two.
+Sustaining peak therefore requires roughly
 
-$$ 3.35 \times 10^{12}\ \text{B/s} \times 650 \times 10^{-9}\ \text{s} \approx 2.2\ \text{MB} $$
+$$ 3.35 \times 10^{12}\ \text{B/s} \times 375 \times 10^{-9}\ \text{s} \approx 1.3\ \text{MB} $$
 
-in flight at all times. Spread across 132 streaming multiprocessors that is about 16 KB per SM,
-or on the order of 500 sectors per SM outstanding, continuously. Now the occupancy question has
+in flight at all times. Spread across 132 streaming multiprocessors that is about 9.5 KB per SM,
+or on the order of 300 sectors per SM outstanding, continuously. Now the occupancy question has
 a quantitative answer instead of a rule of thumb: if the kernel's achievable outstanding-request
 count is half of that, its speed of light is half of peak, and no amount of tuning inside the
 inner loop will move it. The fix is more memory-level parallelism, not better instruction
@@ -157,3 +161,18 @@ than my involvement in it.
 
 Nothing here is clever. It is just the difference between knowing where the performance went
 and having a plausible story about it.
+
+## Further reading
+
+The empirical counterpart to all of this, and worth your time: Fergus Finn traced a single
+`LDG.E` through an
+[RTX 4090's memory path](https://blog.doubleword.ai/what-happens-when-a-gpu-reads-memory),
+reverse-engineering the L1 set index and the L2 slice hash by timing rather than by
+documentation, then validating the slice function by showing throughput scale linearly from one
+predicted slice to thirty six. That is what a directed test looks like when the prediction is
+sharp enough to be wrong.
+
+For measured latency and throughput per level, the Hopper and Blackwell microbenchmark
+dissections are the standard references:
+[arXiv 2402.13499](https://arxiv.org/abs/2402.13499) and
+[arXiv 2507.10789](https://arxiv.org/abs/2507.10789).
