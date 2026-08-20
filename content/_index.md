@@ -1,6 +1,8 @@
 ---
 title: "Rutwik Pandit"
-headline: "He who strives unceasingly, him we can save."
+headline: "Wer immer strebend sich bemüht, den können wir erlösen."
+headline_lang: "de"
+headline_gloss: "He who strives him we can redeem"
 headline_source: "Goethe, Faust II"
 specs:
   - k: "LAYER"
