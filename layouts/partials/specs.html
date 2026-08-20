@@ -1,0 +1,18 @@
+{{ with .specs }}
+<div class="specs">
+  {{ range . }}
+    <div class="row">
+      <div class="k">{{ .k }}</div>
+      <div class="v{{ with .tone }} {{ . }}{{ end }}">{{ .v | safeHTML }}</div>
+    </div>
+  {{ end }}
+  {{ if $.links }}
+    <div class="links">
+      <a href="{{ site.Params.github }}">GitHub</a>
+      <a href="{{ site.Params.linkedin }}">LinkedIn</a>
+      <a href="mailto:{{ site.Params.email }}">Email</a>
+      <a href="{{ "index.xml" | relURL }}">RSS</a>
+    </div>
+  {{ end }}
+</div>
+{{ end }}

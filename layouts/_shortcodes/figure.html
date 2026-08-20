@@ -1,0 +1,3 @@
+{{- /* Usage: {{< figure name="overlap" caption="Figure 1. Schematic only." >}} */ -}}
+{{- $name := .Get "name" -}}
+{{- partial (printf "figures/%s.html" $name) (dict "caption" (.Get "caption") "thumb" false) -}}

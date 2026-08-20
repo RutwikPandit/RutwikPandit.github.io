@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div>
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </div>
+  {{ partial "specs.html" (dict "specs" .Params.specs) }}
+</section>
+
+{{ $pages := .RegularPages.ByDate.Reverse }}
+
+{{ if eq .Section "projects" }}
+  <div class="postlist">
+    {{ range $pages }}
+      <div class="item">
+        <div class="date">{{ with .Params.status }}{{ . }}{{ end }}</div>
+        <div>
+          <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <div class="dek">{{ with .Params.dek }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</div>
+        </div>
+        <div class="side"></div>
+      </div>
+    {{ end }}
+  </div>
+{{ else }}
+  {{ range $pages.GroupByDate "2006" }}
+    <div class="label" style="padding-top: 4px; margin-bottom: 2px;">{{ .Key }}</div>
+    <div class="postlist">
+      {{ range .Pages }}
+        <div class="item">
+          <div class="date">{{ .Date.Format "2 Jan" }}</div>
+          <div>
+            <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <div class="dek">{{ with .Params.dek }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</div>
+          </div>
+          <div class="side">
+            <div>{{ .ReadingTime }} MIN</div>
+            {{ with .Params.tags }}<div class="tags">{{ delimit . " · " }}</div>{{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{ if not $pages }}
+    <p style="max-width: 700px;">Nothing published yet. The first post lands shortly, and the
+    <a href="{{ "index.xml" | relURL }}">feed</a> is already live.</p>
+  {{ end }}
+{{ end }}
+
+{{ end }}

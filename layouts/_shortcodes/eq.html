@@ -1,0 +1,5 @@
+{{- /* Usage: {{< eq note="rho is per-resource contention pressure." >}}$$ ... $$ {{< /eq >}} */ -}}
+<div class="eq">
+  <div class="form">{{ .Inner | .Page.RenderString }}</div>
+  {{- with .Get "note" }}<div class="note">{{ . }}</div>{{ end -}}
+</div>

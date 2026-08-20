@@ -1,0 +1,56 @@
+baseURL = "https://rutwikpandit.github.io/"
+locale = "en-US"
+title = "Rutwik Pandit"
+enableRobotsTXT = true
+enableEmoji = false
+
+# Posts live in content/writing/. Drafts stay out of the build until draft = false.
+[params]
+  description = "Performance architect. GPU and SoC, pre-silicon to production. Writing weekly on where the performance actually went."
+  email = "rutwik.pandit@gmail.com"
+  github = "https://github.com/RutwikPandit"
+  linkedin = "https://linkedin.com/in/rutwik-p-96a822107"
+  location = "Pittsburgh, PA"
+
+[menus]
+  [[menus.main]]
+    name = "Writing"
+    url = "/writing/"
+    weight = 10
+  [[menus.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 20
+  [[menus.main]]
+    name = "Contact"
+    url = "mailto:rutwik.pandit@gmail.com"
+    weight = 30
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\[', '\]']]
+          inline = [['$', '$'], ['\(', '\)']]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    tabWidth = 2
+    guessSyntax = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[taxonomies]
+  tag = "tags"
+
+[services.rss]
+  limit = 30
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]

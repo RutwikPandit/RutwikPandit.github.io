@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div>
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+      <span class="label">Project</span>
+      {{ with .Params.status }}<span class="chip">{{ . }}</span>{{ end }}
+    </div>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.dek }}<p style="font-size: 1.09rem; color: var(--ink);">{{ . }}</p>{{ end }}
+    {{ with .Params.intro }}<p style="margin-bottom: 0;">{{ . }}</p>{{ end }}
+  </div>
+  {{ partial "specs.html" (dict "specs" .Params.specs) }}
+</section>
+
+<div class="rule"></div>
+
+<div class="prose" style="max-width: none; padding-top: 34px;">
+  {{ .Content }}
+</div>
+
+{{ end }}
