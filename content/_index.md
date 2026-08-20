@@ -1,6 +1,7 @@
 ---
 title: "Rutwik Pandit"
-headline: "I find out where the performance went."
+headline: "He who strives unceasingly, him we can save."
+headline_source: "Goethe, Faust II"
 specs:
   - k: "LAYER"
     v: "SASS &rarr; uarch &rarr; RTL &rarr; fabric"
@@ -27,8 +28,8 @@ jobs:
     body: "MS ECE, Carnegie Mellon, 2026 &middot; MTech Computer Science, IIT Kharagpur, 2022 &middot; BTech Electronics, SPIT Mumbai, 2020 &middot; GATE 2020 all India rank 276"
 ---
 
-Four years of full-chip pre-silicon GPU and SoC performance, at NVIDIA and Qualcomm.
-Directed tests at the instruction level, a cycle-accurate C++ model correlated against RTL,
+I find out where the performance went. Four years of full-chip pre-silicon GPU and SoC
+performance, at NVIDIA and Qualcomm: directed tests at the instruction level, a cycle-accurate C++ model correlated against RTL,
 speed-of-light bounds derived one interface at a time. Every layer makes promises to the one
 above it, and my job has been to find out which ones break, usually before the silicon exists
 to blame.

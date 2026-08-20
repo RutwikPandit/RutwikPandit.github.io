@@ -5,6 +5,7 @@
 <section class="hero">
   <div>
     <h1>{{ .Params.headline }}</h1>
+    {{ with .Params.headline_source }}<div class="attrib">{{ . }}</div>{{ end }}
     {{ .Content }}
   </div>
   {{ partial "specs.html" (dict "specs" .Params.specs "links" true) }}
@@ -45,20 +46,6 @@
     <a href="{{ "index.xml" | relURL }}">/index.xml</a> if you would rather not check back.</p>
 {{ end }}
 
-{{ with index (where site.RegularPages "Section" "projects") 0 }}
-  <div class="rule" style="margin: 44px 0 30px;"></div>
-  <section class="split">
-    <div>
-      <div class="label" style="margin-bottom: 16px;">Building</div>
-      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
-        <a href="{{ .RelPermalink }}" style="font-size: 1.28rem; font-weight: 600; color: var(--ink);">{{ .Title }}</a>
-        {{ with .Params.status }}<span class="chip">{{ . }}</span>{{ end }}
-      </div>
-      <p style="margin: 0; font-size: 0.98rem;">{{ .Params.dek }}</p>
-    </div>
-    {{ partial "specs.html" (dict "specs" .Params.homespecs) }}
-  </section>
-{{ end }}
 
 <div class="rule" style="margin: 44px 0 0;"></div>
 <div class="label" style="padding-top: 30px; margin-bottom: 4px;">Track record</div>
