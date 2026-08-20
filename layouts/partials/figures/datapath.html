@@ -1,0 +1,55 @@
+{{- $thumb := .thumb | default false -}}
+{{- $stages := slice
+  (dict "label" "SM ISSUE" "pct" 61)
+  (dict "label" "L1 / SMEM" "pct" 44)
+  (dict "label" "XBAR" "pct" 72)
+  (dict "label" "L2" "pct" 97 "limiter" true)
+  (dict "label" "MC" "pct" 58)
+  (dict "label" "HBM" "pct" 54)
+-}}
+{{- if $thumb -}}
+<svg viewBox="0 0 268 172" width="268" style="display: block; background: var(--surface); border: 1px solid var(--rule);" role="img" aria-label="Per-interface utilization bars along a GPU datapath, with one interface saturated">
+  <text x="14" y="20" font-family="JetBrains Mono, monospace" font-size="8" fill="var(--faint)" letter-spacing="0.8">ACHIEVED / SOL</text>
+  {{- range $i, $s := $stages -}}
+    {{- $y := add 32 (mul $i 22) -}}
+    {{- $w := div (mul $s.pct 150) 100 -}}
+    <text x="14" y="{{ add $y 8 }}" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--muted)">{{ $s.label }}</text>
+    <rect x="80" y="{{ $y }}" width="150" height="9" fill="var(--rule)"></rect>
+    <rect x="80" y="{{ $y }}" width="{{ $w }}" height="9" fill="{{ if $s.limiter }}var(--warn){{ else }}var(--accent){{ end }}" fill-opacity="{{ if $s.limiter }}0.65{{ else }}0.4{{ end }}"></rect>
+    <text x="238" y="{{ add $y 8 }}" font-family="JetBrains Mono, monospace" font-size="7.5" fill="{{ if $s.limiter }}var(--warn){{ else }}var(--faint) {{ end }}">{{ $s.pct }}</text>
+  {{- end -}}
+</svg>
+{{- else -}}
+<figure class="figure">
+  <div class="frame">
+    <svg viewBox="0 0 812 232" width="100%" style="display: block;" role="img" aria-label="A GPU datapath drawn as six interfaces in series, each with its own achieved-over-speed-of-light bar. The L2 interface is saturated and is the binding constraint.">
+      {{- range $i, $s := $stages -}}
+        {{- $x := add 30 (mul $i 128) -}}
+        {{- $w := div (mul $s.pct 104) 100 -}}
+        <rect x="{{ $x }}" y="44" width="104" height="42" rx="2"
+              fill="{{ if $s.limiter }}var(--warn){{ else }}var(--accent){{ end }}" fill-opacity="0.1"
+              stroke="{{ if $s.limiter }}var(--warn){{ else }}var(--rule) {{ end }}"></rect>
+        <text x="{{ add $x 52 }}" y="70" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10"
+              fill="{{ if $s.limiter }}var(--warn){{ else }}var(--muted) {{ end }}">{{ $s.label }}</text>
+        <rect x="{{ $x }}" y="108" width="104" height="9" fill="var(--rule)"></rect>
+        <rect x="{{ $x }}" y="108" width="{{ $w }}" height="9"
+              fill="{{ if $s.limiter }}var(--warn){{ else }}var(--accent){{ end }}"
+              fill-opacity="{{ if $s.limiter }}0.65{{ else }}0.4{{ end }}"></rect>
+        <text x="{{ $x }}" y="134" font-family="JetBrains Mono, monospace" font-size="9.5"
+              fill="{{ if $s.limiter }}var(--warn){{ else }}var(--faint) {{ end }}">{{ $s.pct }}% of SOL</text>
+        {{- if $s.limiter -}}
+          <text x="{{ add $x 52 }}" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--warn)" letter-spacing="1">BINDING</text>
+        {{- end -}}
+        {{- if lt $i 5 -}}
+          <line x1="{{ add $x 106 }}" y1="65" x2="{{ add $x 126 }}" y2="65" stroke="var(--rule)" stroke-width="1"></line>
+          <path d="M {{ add $x 122 }} 61 L {{ add $x 126 }} 65 L {{ add $x 122 }} 69" fill="none" stroke="var(--rule)" stroke-width="1"></path>
+        {{- end -}}
+      {{- end -}}
+      <text x="30" y="168" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--faint)" letter-spacing="1">ACHIEVED / SPEED OF LIGHT, PER INTERFACE, FOR ONE DIRECTED WORKLOAD</text>
+      <line x1="30" y1="186" x2="782" y2="186" stroke="var(--rule)"></line>
+      <text x="30" y="208" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--muted)">Five interfaces have headroom. One does not. That is the whole answer.</text>
+    </svg>
+  </div>
+  {{- with .caption }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
+</figure>
+{{- end -}}
